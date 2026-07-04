@@ -1,0 +1,1487 @@
+/* Reseteo básico para que no haya márgenes raros */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Forzamos que nada pueda salir de la pantalla */
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+body {
+    font-family: 'sans-serif'; /* Luego puedes elegir una más linda */
+    line-height: 1.6;
+}
+
+
+/* --- SECCIÓN HEADER --- */
+
+/* ==========================================================================
+   Header Eficiente (Mobile-First)
+   ========================================================================== */
+
+
+.main-header {
+    background-color: #E1EAF4;
+    width: 100%;
+    position: relative;
+    /* Evita que el header genere barras si algo se pasa un píxel: */
+    overflow: visible !important; 
+}
+
+
+
+.header-container {
+    display: flex;
+    flex-direction: column; /* Apila logo arriba y menú abajo */
+    align-items: center;    /* Centra todo horizontalmente */
+    justify-content: center;
+    padding: 1rem;
+    gap: 1rem;              /* Le da un aire prolijo de separación al logo del menú */
+    width: 100%;
+    max-width: 100%;
+    overflow: visible !important;
+}
+
+
+
+/* Logo (Agrandado para mobile) */
+.logo-img {
+    height: 75px; /* <--- Cambiá este valor hasta encontrar el tamaño que más te guste */
+    width: auto;  /* Esto mantiene la proporción perfecta para que no se deforme */
+}
+
+
+.main-nav {
+    display: block !important;    /* Forzamos a que SÍ se vea siempre, chau JS */
+    position: static !important; /* Lo sacamos del modo absoluto para que no flote ni genere scrolls */
+    width: auto;
+}
+
+/* Forzamos a que la lista sea una fila horizontal en el celular */
+.main-nav ul, .nav-list {
+    display: flex !important;
+    flex-direction: row !important; /* En fila, uno al lado del otro */
+    justify-content: center;
+    align-items: center;
+    gap: 1.2rem;                    /* Espacio compacto para que entre en pantallas chicas */
+    list-style: none;               /* Chau puntitos */
+    padding: 0;
+    margin: 0;
+}
+
+
+.nav-link, .main-nav a {
+    font-family: 'Archivo', sans-serif;
+    font-size: 0.9rem;      /* Tamaño justo para leer cómodo */
+    font-weight: 600;
+    color: #091F53;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+
+
+/* ==========================================================================
+   Ajuste exclusivo para el botón de arriba en Mobile
+   ========================================================================== */
+.btn-hero {
+    display: inline-flex !important; /* Le devolvemos la visibilidad en el celu */
+    align-items: center;
+    justify-content: center;
+    
+    /* 👇 Valores clave para achicarlo y que quede armonioso */
+    padding: 0.6rem 1.5rem !important;  /* Menos aire adentro */
+    font-size: 0.85rem !important;      /* Letra más delicada */
+    
+    width: auto !important;             /* Que no se estire a lo ancho */
+    max-width: 220px;                   /* Un tope seguro */
+    margin: 1.5rem auto 0 auto !important; /* Lo centra y le da aire con lo de arriba */
+}
+
+
+
+/* ==========================================================================
+   Sección HERO (Mobile-First)
+   ========================================================================== */
+
+/* Contenedor principal de la sección (Fondo general) */
+.hero-section {
+    background-color: #E1EAF4; /* El mismo celeste claro del header */
+    width: 100%;
+    padding: 2rem 1rem 4rem 1rem; /* Aire arriba, a los costados y abajo */
+}
+
+/* Contenedor interno que agrupa los bloques */
+.hero-container {
+    display: flex;
+    flex-direction: column; /* En mobile: Imagen arriba, texto abajo */
+    align-items: center;
+    gap: 2.5rem;            /* Espacio de separación entre la imagen y el texto */
+    max-width: 1200px;      /* Límite para que en pantallas gigantes no se estire infinito */
+    margin: 0 auto;         /* Centra todo el bloque en la pantalla */
+}
+
+/* --- BLOQUE 1: Imagen / Mockups --- */
+.hero-image-container {
+    width: 100%;
+    max-width: 450px;       /* Evita que la imagen se haga gigante en tablets */
+    display: flex;
+    justify-content: center;
+}
+
+.hero-img {
+    width: 100%;
+    height: auto;           /* Mantiene la proporción perfecta de tus mockups */
+    object-fit: contain;
+}
+
+/* --- BLOQUE 2: Contenido de Texto --- */
+.hero-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinea los textos a la izquierda */
+    text-align: left;
+}
+
+
+/* --- GRUPO DE BOTONES (FLEXBOX) --- */
+.hero-actions {
+    display: flex;
+    flex-direction: row;    /* Uno al lado del otro */
+    align-items: center;
+    gap: 1rem;              /* Separación prolija entre ambos */
+    margin-top: 2rem;       /* Aire respecto al párrafo de arriba */
+    width: 100%;            /* Ocupa el ancho disponible */
+}
+
+/* --- ESTILOS BASE PARA AMBOS BOTONES --- */
+.btn-primary, .btn-secondary {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.8rem 1.8rem; /* Aire interno para darles cuerpo */
+    font-family: 'Archivo', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;  /* Chau subrayado */
+    border-radius: 12px;     /* Bordes redondeados sutiles como tu Figma */
+    transition: all 0.3s ease; /* Efecto suave para cuando pases el mouse (hover) */
+    cursor: pointer;
+}
+
+/* --- BOTÓN 1: HABLEMOS (Verde Pleno) --- */
+.btn-primary {
+    background-color: #27AE60; /* El verde de tu diseño */
+    color: #FFFFFF;            /* Texto blanco */
+    border: none;              /* Sin borde */
+}
+
+.btn-primary:hover {
+    background-color: #219653; /* Un verde un toque más oscuro al pasar el mouse */
+}
+
+/* --- BOTÓN 2: VER PROYECTOS (Blanco con Borde) --- */
+.btn-secondary {
+    background-color: #FFFFFF; /* Fondo blanco */
+    color: #091F53;            /* El azul oscuro de tu tipografía */
+    border: 1px solid #D1Dbe5; /* Borde sutil grisáceo/azulado */
+}
+
+.btn-secondary:hover {
+    background-color: #F4F7FA; /* Se oscurece un penique al pasar el mouse */
+    border-color: #091F53;     /* El borde se vuelve azul oscuro */
+}
+
+
+/* --- ESTILOS DE LOS TEXTOS (Mobile-First) --- */
+
+/* 1. El Tagline (IDEAS • DISEÑO • CALIDAD) */
+.hero-tagline {
+    font-family: 'Archivo', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;      /* Separa un poquito las letras para que tenga más aire */
+    color: #091F53;             /* El azul oscuro principal */
+    margin-bottom: 1rem;        /* Despega el tagline del título principal */
+}
+
+/* 2. El Título Principal (H1) */
+.hero-title {
+    font-family: 'Archivo', sans-serif;
+    font-size: 1.8rem;          /* Tamaño ideal y legible para celulares */
+    font-weight: 800;           /* Bien gordita como en el diseño */
+    color: #0F172A;             /* Un tono casi negro muy fino para el texto base */
+    line-height: 1.3;           /* Controla el interlineado para que no se encimen los renglones */
+    margin-bottom: 1.5rem;      /* Separa el título del párrafo */
+}
+
+/* 3. Las palabras destacadas en Verde (experiencia y calidad) */
+.txt-highlight {
+    color: #27AE60;             /* El mismo verde de tu botón primary */
+    display: inline-block;      /* Evita efectos raros de renderizado */
+}
+
+/* 4. El Párrafo Descriptivo */
+.hero-description {
+    font-family: 'Archivo', sans-serif; /* O la tipografía de cuerpo que uses */
+    font-size: 1rem;
+    font-weight: 500;
+    color: #334155;             /* Un gris oscuro suave para que descanse la vista */
+    line-height: 1.6;           /* Interlineado más alto para que sea súper fácil de leer */
+    margin-bottom: 0;           /* El espacio hacia abajo lo maneja el margin-top de los botones */
+}
+
+
+
+/* ==========================================================================
+   Sección SOBRE MÍ (Estilos generales para Mobile)
+   ========================================================================== */
+
+.about-section {
+    background-color: #FFFFFF; /* Fondo blanco para contrastar con el celeste del Hero */
+    width: 100%;
+    padding: 4rem 1.5rem;
+}
+
+.about-container {
+    display: flex;
+    flex-direction: column; /* Foto arriba, textos abajo en celular */
+    align-items: center;
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- CONTENEDOR DE LA FOTO Y TAG FLOTANTE --- */
+.about-image-wrapper {
+    position: relative; /* Clave para poder flotar el tag de estudiante adentro */
+    width: 100%;
+    max-width: 380px; /* Tamaño controlado de la foto en celular */
+    margin: 0 auto;
+    
+}
+
+.about-profile-img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    object-position: center top;
+    
+    border-radius: 16px; /* Esquinas redondeadas como tu Figma */
+    display: block;
+}
+
+
+
+/* El tag flotante de Estudiante (Solapado abajo de la foto) */
+.tag-floating {
+    position: absolute;
+    bottom: -20px; /* Lo saca un poquito del borde inferior de la foto */
+    left: 50%;
+    transform: translateX(-50%); /* Lo centra perfectamente horizontal */
+    background-color: #FFFFFF;
+    border: 1px solid #E1EAF4;
+    border-radius: 12px;
+    padding: 0.6rem 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    box-shadow: 0 8px 20px rgba(9, 31, 83, 0.1); /* Sombra para el efecto "elevado" */
+    white-space: nowrap;
+}
+
+.tag-title {
+    display: block;
+    font-family: 'Archivo', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #64748B;
+}
+
+.tag-subtitle {
+    display: block;
+    font-family: 'Archivo', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #091F53;
+}
+
+/* --- CONTENIDO DE TEXTO --- */
+.about-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.about-welcome {
+    font-family: 'Archivo', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #091F53;
+    margin-bottom: 0.8rem;
+}
+
+.about-title {
+    font-family: 'Archivo', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #0F172A;
+    line-height: 1.3;
+    margin-bottom: 1.5rem;
+}
+
+.txt-highlight-dark {
+    color: #091F53; /* Azul oscuro destacado */
+}
+
+.about-description {
+    font-family: 'Archivo', sans-serif;
+    font-size: 0.95rem;
+    color: #334155;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+}
+
+/* --- CUADRÍCULA DE CARDS PEQUEÑAS (GRID) --- */
+.specialties-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas iguales en celular */
+    gap: 1rem;                             /* Separación entre las 4 cards */
+    width: 100%;
+}
+
+.card-specialty {
+    background-color: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    box-shadow: 0 4px 10px rgba(9, 31, 83, 0.05); /* Sombra sutil para las tarjetas */
+}
+
+.card-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    flex-shrink: 0; /* Evita que el icono se aplaste */
+}
+
+.card-name {
+    font-family: 'Archivo', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #091F53;
+}
+
+
+/* ==========================================================================
+   Sección SERVICIOS (Mobile-First)
+   ========================================================================== */
+
+.services-section {
+    background-color: #EBF2FA; /* Ese celeste/azul súper suave de fondo */
+    width: 100%;
+    padding: 4rem 1.5rem;
+}
+
+.services-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+/* Encabezado */
+.services-header {
+    text-align: center; /* Centrado como en el Figma */
+}
+
+.services-tagline {
+    font-family: 'Archivo', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #091F53;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.services-title {
+    font-family: 'Archivo', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #0F172A;
+}
+
+/* Grilla de servicios en Mobile */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Cuadrícula de 2x2 en celular */
+    gap: 1.2rem;
+    width: 100%;
+}
+
+/* Estilo de cada tarjeta */
+.service-card {
+    background-color: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 16px; /* Bordes redondeados sutiles */
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centramos el contenido internamente en mobile */
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(9, 31, 83, 0.04); /* Sombra muy delicada */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+
+/* --- EFECTO INTERACTIVO AL PASAR EL MOUSE --- */
+.service-card:hover {
+    transform: translateY(-6px); /* Eleva la tarjeta 6 píxeles hacia arriba */
+    box-shadow: 0 12px 30px rgba(9, 31, 83, 0.1); /* La sombra se agranda y se suaviza */
+    border-color: #27AE60; /* El borde cambia al hermoso verde de tus iconos */
+}
+
+/* Feedback táctil rápido para celulares */
+.service-card:active {
+    background-color: #F8FAFC; /* Cambia a un gris muy sutil al tocar */
+    transform: scale(0.98);    /* Hace un mini efecto de hundimiento */
+}
+
+
+/* Contenedor del icono por si querés darle un fondo o forma */
+.service-icon-wrapper {
+    margin-bottom: 1rem;
+}
+
+.service-icon {
+    width: 32px; /* Un toque más grandes que los de la sección anterior */
+    height: 32px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+/* Cuando la TARJETA entra en hover, el ICONO se agranda un 10% */
+.service-card:hover .service-icon {
+    transform: scale(1.3);
+}
+
+.service-card-title {
+    font-family: 'Archivo', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #0F172A;
+    margin-bottom: 0.8rem;
+}
+
+.service-card-desc {
+    font-family: 'Archivo', sans-serif;
+    font-size: 0.85rem;
+    color: #475569;
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   Sección PROYECTOS (Mobile-First con Swipe Nativo)
+   ========================================================================== */
+
+.projects-section {
+    background-color: #FFFFFF; /* Fondo blanco para volver a contrastar */
+    width: 100%;
+    padding: 4rem 0 4rem 1.5rem; /* Truco: dejamos el padding derecho en 0 para que las tarjetas se corten al borde al scrollear */
+}
+
+.projects-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.projects-header {
+    margin-bottom: 2.5rem;
+    padding-right: 1.5rem; /* Le devolvemos el aire al título */
+}
+
+.projects-tagline {
+    font-family: 'Archivo', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #091F53;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.projects-title {
+    font-family: 'Archivo', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #0F172A;
+}
+
+/* 👇 EL CONTENEDOR DEL SWIPE MÓVIL */
+.projects-carousel {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto; /* Permite scroll horizontal */
+    scroll-snap-type: x mandatory; /* Hace el efecto imán al deslizar */
+    padding-bottom: 1.5rem; /* Aire para que la sombra de abajo no se corte */
+    scrollbar-width: none; /* Oculta la barra de scroll fea en Firefox */
+}
+
+.projects-carousel::-webkit-scrollbar {
+    display: none; /* Oculta la barra de scroll fea en Chrome y Safari */
+}
+
+/* LA TARJETA DE CADA PROYECTO */
+.project-card {
+    flex: 0 0 280px; /* Evita que las tarjetas se achiquen, forzándolas a medir 280px de ancho en mobile */
+    scroll-snap-align: start; /* Punto de anclaje para el efecto imán */
+    background-color: #FFFFFF;
+    border: 1px solid #E1EAF4;
+    border-radius: 16px;
+    overflow: hidden; /* Corta el fondo celeste de abajo para que respete los bordes redondeados */
+    box-shadow: 0 4px 15px rgba(9, 31, 83, 0.03);
+}
+
+/* Contenedor de la imagen (Mockup) */
+.project-image-wrapper {
+    width: 100%;
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    background-color: #FFFFFF; /* Fondo blanco arriba para el mockup */
+}
+
+.project-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* Zócalo de información (Fondo celeste abajo) */
+.project-info {
+    background-color: #EBF2FA; /* El celeste del zócalo de tu Figma */
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.project-category {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 0.7rem;
+    color: #27AE60; /* El verde brillante de tus tags de Figma */
+    letter-spacing: 0.5px;
+}
+
+.project-name {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: #091F53;
+}
+
+/* ==========================================================================
+   Sección MI PROCESO (Mobile-First)
+   ========================================================================== */
+
+.process-section {
+    background-color: #FFFFFF; /* Volvemos a fondo blanco */
+    width: 100%;
+    padding: 4rem 1.5rem;
+}
+
+.process-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+/* Encabezado */
+.process-header {
+    text-align: center;
+}
+
+.process-tagline {
+    font-family: 'Archivo', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #091F53;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.process-title {
+    font-family: 'Archivo', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #0F172A;
+}
+
+/* El bloque contenedor blanco principal */
+.process-card-wrapper {
+    background-color: #FFFFFF;
+    border: 2px solid #e5e8eb;
+    border-radius: 18px;
+    padding: 2.5rem 1.5rem;
+    box-shadow: 0 10px 30px rgba(9, 40, 112, 0.05); /* Sombra suave envolvente */
+    
+    /* Grilla para Mobile (2x2) */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem 1rem; /* Más espacio vertical entre filas que horizontal */
+}
+
+/* Cada paso individual */
+.process-step {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* Espacio entre el círculo del número y el texto */
+}
+
+/* Círculo verde con el número */
+.step-number {
+    width: 46px;
+    height: 46px;
+    background-color: #C2ECC1; /* Ese verde clarito de tu Figma */
+    color: #27AE60;            /* Texto verde oscuro con contraste */
+    font-family: 'Archivo', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 800;
+    border-radius: 50%;        /* Lo hace un círculo perfecto */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;            /* Evita que se deforme */
+}
+
+.step-title {
+    font-family: 'Archivo', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #091F53;
+    line-height: 1.3;
+}
+
+/* ==========================================================================
+   Sección CALL TO ACTION / CONTACTO (Mobile-First)
+   ========================================================================== */
+
+.cta-section {
+    background-color: #EBF2FA; /* El celeste suave característico */
+    width: 100%;
+    padding: 4rem 1.5rem;
+}
+
+.cta-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+}
+
+.cta-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.cta-tagline {
+    font-family: 'Archivo', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: #27AE60; /* Tu verde vibrante de marca */
+    letter-spacing: 1px;
+}
+
+.cta-title {
+    font-family: 'Archivo', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #091F53; /* Azul oscuro potente */
+    line-height: 1.2;
+}
+
+.cta-subtitle {
+    font-family: 'Archivo', sans-serif;
+    font-size: 0.95rem;
+    color: #334155;
+    max-width: 450px;
+    line-height: 1.5;
+}
+
+/* --- EL BOTÓN PREMIUM --- */
+.btn-cta {
+    background-color: #091F53; /* Azul marino profundo */
+    color: #FFFFFF !important;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    font-family: 'Archivo', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0 4px 15px rgba(9, 31, 83, 0.15);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+/* Reutilizamos el efecto active táctil que armamos antes */
+.btn-cta:active {
+    transform: scale(0.96);
+    background-color: #0F172A;
+}
+
+.cta-icon {
+    width: 22px;
+    height: 22px;
+    color: #27AE60; /* Los tres puntitos y borde verdes como tu Figma */
+}
+
+
+/* ==========================================================================
+   FOOTER PRINCIPAL (Mobile-First)
+   ========================================================================== */
+
+.main-footer {
+    background-color: #091F53; /* El azul marino profundo exacto del Figma */
+    color: #FFFFFF;
+    padding: 3rem 1.5rem 2rem 1.5rem;
+    width: 100%;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    position: relative; /* Nos sirve de anclaje para posicionar elementos */
+}
+
+/* Título de Navegación */
+.footer-title {
+    font-family: 'Archivo', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #94A3B8; /* Un gris claro para que no compita */
+    margin-bottom: 1.2rem;
+}
+
+/* Lista de Links */
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.footer-links a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-family: 'Archivo', sans-serif;
+    font-size: 0.90rem;
+    opacity: 0.8;
+    transition: opacity 0.2s ease, padding-left 0.2s ease;
+}
+
+.footer-links a:active {
+    opacity: 1;
+    color: #27AE60;
+}
+
+/* Contenedor de Iconos Redes */
+.footer-socials {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Alineados a la derecha igual al Figma */
+    gap: 1.2rem;
+    position: absolute;    /* En mobile lo dejamos fijo al costado */
+    right: 0;
+    
+    top: 3.5rem;
+}
+
+.social-icon-link {
+    color: #FFFFFF;
+    display: inline-flex;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+/* Controlamos el tamaño de tus imágenes de Figma */
+.footer-icon-img {
+    width: 26px;         /* Cambiá este número si los querés más chicos o grandes */
+    height: 26px;
+    object-fit: contain; /* Evita que la imagen se deforme */
+}
+
+/* La Marca Centralizada Abajo */
+.footer-brand {
+    font-family: 'Archivo', sans-serif;
+    font-size: 1rem;
+    font-weight: 800;
+    color: #27AE60; /* El verde vivo de tu marca */
+    text-align: center;
+    margin-top: 1rem;
+    letter-spacing: 0.5px;
+}
+
+
+
+
+
+
+/* ==========================================================================
+   MODAL DE CONTACTO (Estilos Base - Mobile First)
+   ========================================================================== */
+
+/* Fondo oscuro que cubre toda la pantalla */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 25, 47, 0.6); /* Tu azul oscuro con transparencia */
+    backdrop-filter: blur(4px); /* Efecto vidrio esmerilado */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    padding: 1rem;
+    
+    /* Estado inicial: oculto */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+/* Clase activa que inyectaremos con JavaScript */
+.modal-overlay.is-active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* La tarjeta blanca del modal */
+.modal-content {
+    background-color: #FFFFFF;
+    padding: 2rem 1.5rem 1.5rem 1.5rem;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 480px;
+    max-height: 90vh; /* Evita que se corte en pantallas muy chicas */
+    overflow-y: auto;  /* Permite scroll interno si el celular es enano */
+    position: relative;
+    box-shadow: 0 15px 35px rgba(10, 25, 47, 0.2);
+    font-family: 'Archivo', sans-serif;
+    
+    /* Animación de entrada: sube un poquito */
+    transform: translateY(-20px);
+    transition: transform 0.3s ease;
+}
+
+/* Cuando el modal se activa, la tarjeta se acomoda en su lugar */
+.modal-overlay.is-active .modal-content {
+    transform: translateY(0);
+}
+
+/* Botón de cerrar (X) */
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1.2rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #64748B;
+    transition: color 0.2s;
+}
+.modal-close:hover {
+    color: #0A192F;
+}
+
+/* Encabezados del Modal */
+.modal-title {
+    color: #0A192F; /* Tu azul principal */
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+    padding-right: 1.5rem; /* Que no pise la X */
+}
+.modal-subtitle {
+    color: #475569;
+    font-size: 0.88rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+}
+
+/* Estructura de los campos de formulario */
+.form-group {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+/* En mobile, las filas dobles se comportan como una sola columna */
+.form-group-row {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label,
+.radio-group-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #475569;
+    margin-bottom: 0.4rem;
+}
+
+/* Inputs, Selects y Textarea */
+.modal-form input[type="text"],
+.modal-form input[type="tel"],
+.modal-form input[type="email"],
+.modal-form select,
+.modal-form textarea {
+    padding: 0.75rem;
+    border: 1px solid #E2E8F0;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: #0A192F;
+    background-color: #FAFAFA;
+    transition: border-color 0.2s, background-color 0.2s;
+    width: 100%;
+}
+
+/* Focus en los campos: cambian a tu color verde */
+.modal-form input:focus,
+.modal-form select:focus,
+.modal-form textarea:focus {
+    outline: none;
+    border-color: #52C47D;
+    background-color: #FFFFFF;
+}
+
+/* Radio Buttons (¿Ya tienes web?) */
+.form-group-radio {
+    margin-bottom: 1rem;
+}
+.radio-options {
+    display: flex;
+    gap: 1.5rem;
+    padding-top: 0.2rem;
+}
+.radio-options label {
+    font-size: 0.95rem;
+    color: #0A192F;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+/* Agrandamos un poquito el radio button nativo para mejor UX */
+.radio-options input[type="radio"] {
+    accent-color: #52C47D; /* Usa tu verde de marca */
+    transform: scale(1.1);
+}
+
+/* Botón Enviar (Combinado con tu estilo verde exacto de la web) */
+.btn-submit {
+    background-color: #52C47D;
+    color: #FFFFFF;
+    border: none;
+    padding: 1rem;
+    border-radius: 12px; /* Mismos bordes redondeados que tus otros botones */
+    font-family: 'Archivo', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+.btn-submit:hover {
+    background-color: #45a86b; /* Tu verde oscuro de hover */
+    transform: translateY(-2px);
+}
+.btn-submit:active {
+    transform: translateY(0);
+}
+.btn-icon {
+    font-size: 0.8rem;
+}
+
+/* Contenedor del Mensaje de Éxito */
+.form-success-container {
+    text-align: center;
+    padding: 2rem 1rem;
+}
+.success-icon {
+    font-size: 3rem;
+    color: #52C47D;
+    margin-bottom: 1rem;
+}
+
+/* ==========================================================================
+   VERSION PC (Media Query para Pantallas Grandes)
+   ========================================================================== */
+@media screen and (min-width: 600px) {
+    .modal-content {
+        padding: 2.5rem;
+        max-width: 540px; /* Le damos un toque más de aire */
+    }
+
+    .modal-title {
+        font-size: 1.5rem;
+    }
+
+    /* Activamos las dos columnas en PC para filas específicas */
+    .form-group-row {
+        flex-direction: row;
+        gap: 1rem;
+    }
+    
+    .form-group-row .form-group {
+        flex: 1; /* Se reparten el 50% del espacio cada uno */
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   Cambio a Desktop (A partir de 768px)
+   ========================================================================== */
+
+@media screen and (min-width: 768px) {
+   
+    /* ¡AQUÍ CONTROLAMOS EL TAMAÑO DEL LOGO EN DESKTOP! */
+    .logo-img {
+        height: 100px; /* Subimos de 40px a 55px (o lo que veas mejor en tu Figma) */
+    }
+
+    /* Aparecen los links alineados al lado del logo */
+    .main-nav {
+        display: block;
+    }
+
+    .nav-list {
+        display: flex;
+        gap: 2.5rem; /* Espaciado entre los links como en tu imagen */
+        list-style: none;
+    }
+
+    .nav-link {
+        font-family: 'Archivo', sans-serif; /* <--- Esta línea cambia la fuente */
+        font-size: 1.5rem;
+        font-weight: 600; /* Letra bold/semi-bold como el diseño */
+        color: #091F53;
+        text-decoration: none;
+        
+    }
+
+    /* ==========================================================================
+   Estilos compartidos para los botones en PC (btn-cta y btn-hero)
+   ========================================================================== */
+   
+    /* Agregamos una coma y sumamos la clase .btn-hero para que compartan el mismo estilo */
+    .btn-cta, .btn-hero {
+        display: flex; /* Se muestra en PC */
+        align-items: center;
+        background-color: #52C47D; 
+        color: white;
+        padding: 0.8rem 1.4rem;
+        border-radius: 12px; /* Bordes redondeados como la imagen */
+        font-family: 'Archivo', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 700;
+        text-decoration: none;
+        text-transform: uppercase; /* Todo en mayúsculas */
+        letter-spacing: 0.5px;
+        transition: transform 0.2s ease, background-color 0.2s ease;
+        white-space: nowrap; /* Evita que el texto se rompa en dos líneas */
+        
+        /* 👇 Agregamos estas 3 propiedades para asegurar que en PC mantenga su tamaño de siempre */
+        width: auto !important;
+        max-width: none !important;
+        margin: 0 !important;
+    }
+
+    /* También sumamos .btn-hero al efecto hover */
+    .btn-cta:hover, .btn-hero:hover {
+        background-color: #45a86b; /* Un verde un poquito más oscuro al pasar el mouse */
+        transform: translateY(-2px); /* Efecto sutil de levante */
+    }
+    .btn-cta:hover {
+        background-color: #45a86b; /* Un verde un poquito más oscuro al pasar el mouse */
+        transform: translateY(-2px); /* Efecto sutil de levante */
+    }
+
+    /* Restauramos el menú para que se vea normal y horizontal en la web */
+    .main-nav {
+        display: block !important; /* Se muestra siempre en PC */
+        position: static;          /* Vuelve a su lugar original, no flota */
+        width: auto;
+        background-color: transparent;
+        z-index: 1;
+    }
+
+    /* Volvemos a poner los links de corrido (en fila) como antes */
+    .main-nav ul {
+        display: flex;
+        flex-direction: row; /* Horizontal */
+        gap: 2rem;           /* El espacio que tenías antes entre links */
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    .header-container {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 1rem 2rem; /* Más aire a los costados en pantallas grandes */
+    }
+    .main-nav ul, .nav-list {
+        gap: 2.5rem;        /* Volvemos al espacio amplio de escritorio */
+    }
+
+    .nav-link, .main-nav a {
+        font-size: 1rem; 
+    }
+    
+    /* 1. Cambiamos el flujo a horizontal */
+    .hero-container {
+        flex-direction: row;       /* Se ponen en paralelo (uno al lado del otro) */
+        justify-content: space-between; /* Empuja el texto a un lado y la foto al otro */
+        align-items: center;       /* Los centra verticalmente entre sí */
+        gap: 4rem;                 /* Buen espacio de separación en el medio */
+        padding: 4rem 2rem;        /* Más aire arriba y abajo en la pantalla grande */
+    }
+
+    /* 2. Damos vuelta el orden visual de los elementos */
+    .hero-content {
+        width: 50%;                /* El bloque de texto se queda con la mitad del ancho */
+        order: 1;                  /* Le decimos que aparezca PRIMERO a la izquierda */
+    }
+
+    .hero-image-container {
+        width: 50%;                /* El bloque de la imagen se queda con la otra mitad */
+        max-width: 600px;          /* Permitimos que la imagen crezca más que en mobile */
+        order: 2;                  /* Le decimos que aparezca SEGUNDO a la derecha */
+        justify-content: flex-end; /* Alinea la imagen hacia la derecha del contenedor */
+    }
+
+    /* 3. Agrandamos las tipografías para que tengan la presencia de la versión web */
+    .hero-title {
+        font-size: 2.8rem;         /* Título imponente como en tu Figma */
+        margin-bottom: 2rem;
+    }
+
+    .hero-description {
+        font-size: 1.15rem;        /* Párrafo un toque más grande y legible en PC */
+    }
+
+    .hero-actions {
+        width: auto;               /* Los botones ya no intentan estirarse al 100% */
+    }
+
+    .about-container {
+        flex-direction: row;       /* Foto a la izquierda, texto a la derecha */
+        justify-content: space-between;
+        align-items: center;       
+        gap: 5rem;                 /* Espacio generoso en el medio */
+        padding: 5rem 2rem;
+    }
+
+    .about-image-wrapper {
+        width: 40%;                
+        max-width: 400px;          /* La foto crece con lindo tamaño en PC */
+    }
+
+    /* Buscá esto adentro de tu Media Query de Escritorio */
+    .about-profile-img {
+        width: 100%;
+        height: 500px;       /* Ajustá este número a tu gusto: menos px = más corta en web */
+        object-fit: cover;   /* Crucial para que no se estire ni se aplaste al cambiar el alto */
+    }
+
+    .about-content {
+        width: 60%;                
+    }
+
+    .about-title {
+        font-size: 2.8rem;         /* Título grande e importante */
+        margin-bottom: 2rem;
+    }
+
+    .specialties-grid {
+        grid-template-columns: repeat(4, 1fr); /* ¡Las 4 cards se alinean en una sola fila! */
+        gap: 1.2rem;
+        margin-top: 1rem;
+    }
+
+
+
+    .card-specialty {
+        padding: 1rem 0.8rem;      /* Achicamos un pelín el aire de los costados */
+        justify-content: flex-start; /* Alinea icono y texto a la izquierda */
+        white-space: normal;       /* Permite que el texto baje si no entra */
+        text-align: left;
+    }
+
+
+    .services-section {
+        padding: 6rem 2rem;        /* Le damos más aire arriba y abajo en pantallas grandes */
+    }
+
+    .services-container {
+        gap: 4rem;                 /* Separamos más el título principal de las tarjetas */
+    }
+
+    .services-title {
+        font-size: 2.8rem;         /* Título más imponente en PC */
+    }
+
+    /* Transformamos la grilla de 2x2 a una sola fila horizontal de 4 columnas */
+    .services-grid {
+        grid-template-columns: repeat(4, 1fr); /* 4 columnas iguales alineadas */
+        gap: 1.5rem;                           /* Espaciado prolijo entre tarjetas */
+    }
+
+    /* Alineación de los textos dentro de las tarjetas en PC */
+    .service-card {
+        padding: 2rem 1.5rem;      /* Más espacio interno para que respire el texto */
+        align-items: flex-start;   /* Alinea el icono y textos a la izquierda como en tu Figma */
+        text-align: left;          /* Cambia el texto centrado por alineación a la izquierda */
+    }
+
+    /* ==========================================================================
+       PROYECTOS - Versión Escritorio (Efecto Carrusel/Scroll Horizontal Infinito)
+       ========================================================================== */
+
+    .projects-section {
+        padding: 6rem 2rem !important;
+    }
+
+    .projects-title {
+        font-size: 2.8rem;
+    }
+
+    /* Mantenemos el formato flex del celular pero adaptado a pantallas grandes */
+    .projects-carousel {
+        display: flex !important;
+        gap: 2rem !important;
+        overflow-x: auto !important; /* Permite scroll horizontal en PC si hay más de 3 */
+        padding-bottom: 2rem !important;
+        scrollbar-width: auto !important; /* Deja la barra de scroll visible en PC para que sepan que hay más */
+    }
+
+    /* Forzamos a que cada tarjeta ocupe un tercio de la pantalla en PC */
+    .project-card {
+        flex: 0 0 calc(33.333% - 1.4rem) !important; /* Entran justo 3 en pantalla */
+        width: auto !important;
+    }
+
+    .project-image-wrapper {
+        height: 260px !important;
+    }
+
+    /* ==========================================================================
+       MI PROCESO - Versión Escritorio (PC)
+       ========================================================================== */
+
+    .process-title {
+        font-size: 2.8rem;
+    }
+
+    .process-card-wrapper {
+        grid-template-columns: repeat(4, 1fr); /* ¡Magia! Se alinean los 4 de corrido */
+        padding: 4rem 3rem;                    /* Más aire adentro de la tarjeta en PC */
+        justify-items: center;                 /* Centra los bloques sutilmente en su espacio */
+    }
+    
+    .process-step {
+        gap: 1.2rem;
+    }
+
+    .step-title {
+        font-size: 1.1rem; /* Texto un cachito más grande y legible en monitor */
+    }
+
+    /* ==========================================================================
+       CONTACTO - Versión Escritorio (PC)
+       ========================================================================== */
+
+    .cta-section {
+        padding: 5rem 3rem !important;
+    }
+
+    .cta-container {
+        flex-direction: row !important; /* Pasamos a formato horizontal */
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+        gap: 4rem;
+    }
+
+    .cta-content {
+        align-items: flex-start; /* Textos alineados a la izquierda */
+        max-width: 65%;
+    }
+
+    .cta-title {
+        font-size: 2.8rem;
+    }
+
+    .cta-subtitle {
+        max-width: 550px;
+        font-size: 1.1rem;
+    }
+
+    .cta-action {
+        flex-shrink: 0; /* Evita que el botón se achique en pantallas medianas */
+    }
+
+    /* Hover fino para computadoras */
+    @media (hover: hover) {
+        .btn-cta:hover {
+            transform: translateY(-3px);
+            background-color: #122B68; /* Un tono sutilmente más claro al pasar el cursor */
+            box-shadow: 0 8px 25px rgba(9, 31, 83, 0.25);
+        }
+    }
+
+    /* ==========================================================================
+       Ajustes del Botón de Contacto para Escritorio (image_5207d6.png)
+       ========================================================================== */
+
+    .btn-cta {
+        padding: 1.2rem 3.5rem !important; /* Aumentamos el padding horizontal a 3.5rem para estirarlo */
+        min-width: 240px;                 /* Le aseguramos un ancho mínimo generoso */
+        justify-content: center;          /* Centra el contenido internamente si se estira más */
+        
+        /* Cambios de color según tu captura */
+        background-color: #27AE60 !important; /* Tu verde de marca de fondo */
+        color: #FFFFFF !important;            /* Texto e icono en blanco */
+    }
+
+    .cta-icon {
+        color: #FFFFFF !important;            /* Forzamos al icono a ser blanco también */
+    }
+
+    /* Ajustamos el hover para que reaccione con el nuevo color verde */
+    @media (hover: hover) {
+        .btn-cta:hover {
+            transform: translateY(-3px) !important;
+            background-color: #122B68 !important; /* Un verde un toque más oscuro al pasar el mouse */
+            box-shadow: 0 8px 25px rgba(39, 174, 96, 0.25) !important; /* Sombra con destello verde */
+        }
+    }
+
+    /* ==========================================================================
+       FOOTER - Versión Escritorio (PC)
+       ========================================================================== */
+
+   /* 1. La sección azul principal pasa a ser el ancla real */
+    .main-footer {
+        position: relative !important;
+        padding: 3rem 3rem 2rem 3rem !important; /* Le damos un buen colchón de espacio abajo */
+    }
+
+    /* 2. Forzamos a la caja interna a no molestar con el posicionamiento */
+    .footer-container {
+        position: static !important; /* Desactivamos el contenedor para que la marca lo ignore */
+        flex-direction: row !important;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    /* 3. Clavamos la marca al final del fondo azul oscuro */
+    .footer-brand {
+        position: absolute !important;
+        left: 50% !important;
+        bottom: 2rem !important; /* Ahora sí, se posiciona a 2rem del borde inferior de toda la franja azul */
+        transform: translateX(-50%) !important;
+        margin-top: 0 !important;
+        font-size: 1.1rem !important;
+    }
+
+    .footer-socials {
+        position: static !important; /* Reseteamos el posicionamiento del celular */
+        flex-direction: column;
+        gap: 1.2rem;
+        margin-top: 3.1rem !important;
+    }
+
+
+
+    /* Efectos hover sutiles para PC */
+    @media (hover: hover) {
+        .footer-links a:hover {
+            opacity: 1;
+            color: #27AE60;
+            padding-left: 4px; /* Un mini deslizamiento elegante */
+        }
+
+        .social-icon-link:hover {
+            color: #27AE60; /* Tus redes se tiñen de verde al pasar el mouse */
+            transform: scale(1.15);
+        }
+    }
+
+
+
+
+}
