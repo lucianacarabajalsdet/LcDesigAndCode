@@ -565,10 +565,14 @@ body {
     background-color: #FFFFFF; /* Fondo blanco arriba para el mockup */
 }
 
+
+
 .project-img {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
+    /*  Hack de QA: Amplía la imagen un 15% para que el recuadro verde y el aire blanco queden fuera de la vista */
+    transform: scale(1.15); 
 }
 
 /* Zócalo de información (Fondo celeste abajo) */
