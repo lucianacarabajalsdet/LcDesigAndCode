@@ -1,0 +1,6 @@
+<svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Escudo de certificación y aseguramiento de calidad QA (agrandado y con mayor grosor) -->
+    <path d="M30 4.5L51 12.8V26.5C51 40 41.8 51.2 30 55.5C18.2 51.2 9 40 9 26.5V12.8L30 4.5Z" stroke="#28B567" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Tilde / Checkmark de validación y testing sin fallas -->
+    <path d="M21 29.5L27.5 36L39.5 22.5" stroke="#28B567" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

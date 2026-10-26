@@ -1,0 +1,10 @@
+# Configuraciones del editor (VS Code)
+.vscode/
+
+# Archivos del sistema operativo (Windows y Mac)
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Archivos temporales o logs
+*.log 

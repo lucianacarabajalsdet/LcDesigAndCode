@@ -1,0 +1,466 @@
+/* ==========================================================================
+   LCDesign & Code - Modal & Formulario "Quiero mi sitio" (Co-localizado)
+   ========================================================================== */
+
+/* Fondo oscuro / Overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-overlay);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    padding: 1rem;
+    
+    /* Estado inicial: oculto */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-normal);
+}
+
+.modal-overlay.is-active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Tarjeta principal del Modal */
+.modal-content {
+    background-color: var(--color-bg-white);
+    padding: 2rem 1.5rem 1.5rem 1.5rem;
+    border-radius: var(--radius-xl);
+    width: 100%;
+    max-width: 480px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: var(--shadow-modal);
+    font-family: var(--font-main);
+    transform: translateY(-20px);
+    transition: transform var(--transition-normal);
+}
+
+.modal-overlay.is-active .modal-content {
+    transform: translateY(0);
+}
+
+/* Botón de Cierre (X) */
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1.2rem;
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    line-height: 1;
+    cursor: pointer;
+    color: var(--color-text-muted);
+    transition: color var(--transition-fast), transform var(--transition-fast);
+    padding: 0.3rem;
+}
+
+.modal-close:hover {
+    color: var(--color-primary-dark);
+    transform: scale(1.1);
+}
+
+/* Encabezados del Modal */
+.modal-title {
+    color: var(--color-primary-dark);
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+    padding-right: 1.5rem;
+}
+
+.modal-subtitle {
+    color: var(--color-text-desc);
+    font-size: 0.88rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.45;
+}
+
+/* Estructura de Campos */
+.form-group {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group-row {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label,
+.radio-group-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-text-desc);
+    margin-bottom: 0.4rem;
+}
+
+/* Inputs, Selects y Textareas */
+.modal-form input[type="text"],
+.modal-form input[type="tel"],
+.modal-form input[type="email"],
+.modal-form input[type="url"],
+.modal-form select,
+.modal-form textarea {
+    padding: 0.75rem 0.85rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: var(--color-primary-dark);
+    background-color: var(--color-bg-card);
+    transition: border-color var(--transition-fast), background-color var(--transition-fast);
+    width: 100%;
+}
+
+.modal-form input:focus,
+.modal-form select:focus,
+.modal-form textarea:focus {
+    outline: none;
+    border-color: var(--color-secondary-light);
+    background-color: var(--color-bg-white);
+    box-shadow: 0 0 0 3px rgba(82, 196, 125, 0.15);
+}
+
+/* Radios: ¿Ya tienes web? */
+.form-group-radio {
+    margin-bottom: 1rem;
+}
+
+.radio-options {
+    display: flex;
+    gap: 1.5rem;
+    padding-top: 0.2rem;
+}
+
+.radio-options label {
+    font-size: 0.95rem;
+    color: var(--color-primary-dark);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.radio-options input[type="radio"] {
+    accent-color: var(--color-secondary-light);
+    transform: scale(1.1);
+}
+
+/* Botón Enviar */
+.btn-submit {
+    background-color: var(--color-secondary-light);
+    color: var(--color-text-white);
+    border: none;
+    padding: 1rem;
+    border-radius: var(--radius-lg);
+    font-family: var(--font-main);
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    box-shadow: 0 4px 15px rgba(82, 196, 125, 0.2);
+    transition: transform var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.btn-submit:hover {
+    background-color: var(--color-secondary-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-btn-hover);
+}
+
+.btn-submit:active {
+    transform: translateY(0);
+}
+
+.btn-submit:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-icon {
+    font-size: 0.85rem;
+}
+
+/* Mensaje de Éxito */
+.form-success-container {
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+.success-icon {
+    font-size: 3rem;
+    color: var(--color-secondary-light);
+    margin-bottom: 1rem;
+}
+
+/* ==========================================================================
+   Modal - Versión Pantallas Medianas y Grandes (A partir de 600px)
+   ========================================================================== */
+@media screen and (min-width: 600px) {
+    .modal-content {
+        padding: 2.5rem;
+        max-width: 540px;
+    }
+
+    .modal-title {
+        font-size: 1.5rem;
+    }
+
+    .form-group-row {
+        flex-direction: row;
+        gap: 1rem;
+    }
+
+    .form-group-row .form-group {
+        flex: 1;
+    }
+}
+/* ==========================================================================
+   LCDesign & Code - Modal & Formulario "Quiero mi sitio" (Co-localizado)
+   ========================================================================== */
+
+/* Fondo oscuro / Overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-overlay);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    padding: 1rem;
+    
+    /* Estado inicial: oculto */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-normal);
+}
+
+.modal-overlay.is-active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Tarjeta principal del Modal */
+.modal-content {
+    background-color: var(--color-bg-white);
+    padding: 2rem 1.5rem 1.5rem 1.5rem;
+    border-radius: var(--radius-xl);
+    width: 100%;
+    max-width: 480px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: var(--shadow-modal);
+    font-family: var(--font-main);
+    transform: translateY(-20px);
+    transition: transform var(--transition-normal);
+}
+
+.modal-overlay.is-active .modal-content {
+    transform: translateY(0);
+}
+
+/* Botón de Cierre (X) */
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1.2rem;
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    line-height: 1;
+    cursor: pointer;
+    color: var(--color-text-muted);
+    transition: color var(--transition-fast), transform var(--transition-fast);
+    padding: 0.3rem;
+}
+
+.modal-close:hover {
+    color: var(--color-primary-dark);
+    transform: scale(1.1);
+}
+
+/* Encabezados del Modal */
+.modal-title {
+    color: var(--color-primary-dark);
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+    padding-right: 1.5rem;
+}
+
+.modal-subtitle {
+    color: var(--color-text-desc);
+    font-size: 0.88rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.45;
+}
+
+/* Estructura de Campos */
+.form-group {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group-row {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label,
+.radio-group-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-text-desc);
+    margin-bottom: 0.4rem;
+}
+
+/* Inputs, Selects y Textareas */
+.modal-form input[type="text"],
+.modal-form input[type="tel"],
+.modal-form input[type="email"],
+.modal-form input[type="url"],
+.modal-form select,
+.modal-form textarea {
+    padding: 0.75rem 0.85rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: var(--color-primary-dark);
+    background-color: var(--color-bg-card);
+    transition: border-color var(--transition-fast), background-color var(--transition-fast);
+    width: 100%;
+}
+
+.modal-form input:focus,
+.modal-form select:focus,
+.modal-form textarea:focus {
+    outline: none;
+    border-color: var(--color-secondary-light);
+    background-color: var(--color-bg-white);
+    box-shadow: 0 0 0 3px rgba(82, 196, 125, 0.15);
+}
+
+/* Radios: ¿Ya tienes web? */
+.form-group-radio {
+    margin-bottom: 1rem;
+}
+
+.radio-options {
+    display: flex;
+    gap: 1.5rem;
+    padding-top: 0.2rem;
+}
+
+.radio-options label {
+    font-size: 0.95rem;
+    color: var(--color-primary-dark);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.radio-options input[type="radio"] {
+    accent-color: var(--color-secondary-light);
+    transform: scale(1.1);
+}
+
+/* Botón Enviar */
+.btn-submit {
+    background-color: var(--color-secondary-light);
+    color: var(--color-text-white);
+    border: none;
+    padding: 1rem;
+    border-radius: var(--radius-lg);
+    font-family: var(--font-main);
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    box-shadow: 0 4px 15px rgba(82, 196, 125, 0.2);
+    transition: transform var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.btn-submit:hover {
+    background-color: var(--color-secondary-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-btn-hover);
+}
+
+.btn-submit:active {
+    transform: translateY(0);
+}
+
+.btn-submit:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-icon {
+    font-size: 0.85rem;
+}
+
+/* Mensaje de Éxito */
+.form-success-container {
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+.success-icon {
+    font-size: 3rem;
+    color: var(--color-secondary-light);
+    margin-bottom: 1rem;
+}
+
+/* ==========================================================================
+   Modal - Versión Pantallas Medianas y Grandes (A partir de 600px)
+   ========================================================================== */
+@media screen and (min-width: 600px) {
+    .modal-content {
+        padding: 2.5rem;
+        max-width: 540px;
+    }
+
+    .modal-title {
+        font-size: 1.5rem;
+    }
+
+    .form-group-row {
+        flex-direction: row;
+        gap: 1rem;
+    }
+
+    .form-group-row .form-group {
+        flex: 1;
+    }
+}

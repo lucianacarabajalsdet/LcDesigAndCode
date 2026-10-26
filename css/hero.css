@@ -1,0 +1,161 @@
+/* ==========================================================================
+   LCDesign & Code - Sección HERO (Mobile-First + Desktop Co-localizado)
+   ========================================================================== */
+
+.hero-section {
+    background-color: var(--color-bg-light);
+    width: 100%;
+    padding: 2.5rem 1.2rem 4rem 1.2rem;
+}
+
+.hero-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- Bloque Imagen / Mockups --- */
+.hero-image-container {
+    width: 100%;
+    max-width: 450px;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 25px rgba(9, 31, 83, 0.08));
+}
+
+/* --- Bloque Contenido de Texto --- */
+.hero-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.hero-tagline {
+    font-family: var(--font-main);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+}
+
+.hero-title {
+    font-family: var(--font-main);
+    font-size: 1.85rem;
+    font-weight: 800;
+    color: var(--color-text-title);
+    line-height: 1.25;
+    margin-bottom: 1.2rem;
+}
+
+.hero-description {
+    font-family: var(--font-main);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-text-body);
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+/* --- Botones de Acción del Hero --- */
+.hero-actions {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    width: 100%;
+}
+
+.btn-primary, 
+.btn-secondary {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.85rem 1.8rem;
+    font-family: var(--font-main);
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-normal);
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: var(--color-secondary);
+    color: var(--color-text-white);
+    border: none;
+    box-shadow: 0 4px 15px rgba(39, 174, 96, 0.2);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-secondary-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-btn-hover);
+}
+
+.btn-secondary {
+    background-color: var(--color-bg-white);
+    color: var(--color-primary);
+    border: 1px solid #D1DBE5;
+}
+
+.btn-secondary:hover {
+    background-color: #F4F7FA;
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   Hero - Versión Escritorio (A partir de 768px)
+   ========================================================================== */
+@media screen and (min-width: 768px) {
+    .hero-section {
+        padding: 4rem 2rem 5rem 2rem;
+    }
+
+    .hero-container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 4rem;
+    }
+
+    .hero-content {
+        width: 52%;
+        order: 1; /* Texto a la izquierda */
+    }
+
+    .hero-image-container {
+        width: 48%;
+        max-width: 580px;
+        order: 2; /* Imagen a la derecha */
+        justify-content: flex-end;
+    }
+
+    .hero-title {
+        font-size: 2.8rem;
+        margin-bottom: 1.8rem;
+    }
+
+    .hero-description {
+        font-size: 1.15rem;
+    }
+
+    .hero-actions {
+        width: auto;
+    }
+}

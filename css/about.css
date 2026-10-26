@@ -1,0 +1,188 @@
+/* ==========================================================================
+   LCDesign & Code - Sección SOBRE MÍ (Mobile-First + Desktop Co-localizado)
+   ========================================================================== */
+
+.about-section {
+    background-color: var(--color-bg-white);
+    width: 100%;
+    padding: 4rem 1.5rem;
+}
+
+.about-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- Foto de Perfil y Tag Flotante --- */
+.about-image-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto;
+}
+
+.about-profile-img {
+    width: 100%;
+    height: 460px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: var(--radius-xl);
+    display: block;
+    box-shadow: var(--shadow-md);
+}
+
+.tag-floating {
+    position: absolute;
+    bottom: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--color-bg-white);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 0.65rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    box-shadow: var(--shadow-md);
+    white-space: nowrap;
+}
+
+.tag-title {
+    display: block;
+    font-family: var(--font-main);
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+}
+
+.tag-subtitle {
+    display: block;
+    font-family: var(--font-main);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+/* --- Contenido de Texto --- */
+.about-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.about-welcome {
+    font-family: var(--font-main);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--color-primary);
+    margin-bottom: 0.8rem;
+}
+
+.about-title {
+    font-family: var(--font-main);
+    font-size: 1.85rem;
+    font-weight: 800;
+    color: var(--color-text-title);
+    line-height: 1.25;
+    margin-bottom: 1.4rem;
+}
+
+.about-description {
+    font-family: var(--font-main);
+    font-size: 0.98rem;
+    color: var(--color-text-body);
+    line-height: 1.65;
+    margin-bottom: 2.2rem;
+}
+
+/* --- Grilla de Especialidades --- */
+.specialties-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.9rem;
+    width: 100%;
+}
+
+.card-specialty {
+    background-color: var(--color-bg-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 0.85rem 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.card-specialty:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-secondary);
+}
+
+.card-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.card-name {
+    font-family: var(--font-main);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+/* ==========================================================================
+   Sobre Mí - Versión Escritorio (A partir de 768px)
+   ========================================================================== */
+@media screen and (min-width: 768px) {
+    .about-section {
+        padding: 5rem 2rem;
+    }
+
+    .about-container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 4rem;
+    }
+
+    .about-image-wrapper {
+        width: 42%;
+        max-width: 400px;
+        margin: 0;
+    }
+
+    .about-profile-img {
+        height: 500px;
+    }
+
+    .about-content {
+        width: 58%;
+    }
+
+    .about-title {
+        font-size: 2.8rem;
+        margin-bottom: 1.8rem;
+    }
+
+    .specialties-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .card-specialty {
+        padding: 0.95rem 0.8rem;
+        justify-content: flex-start;
+        text-align: left;
+    }
+}

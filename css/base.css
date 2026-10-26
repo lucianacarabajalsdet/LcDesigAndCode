@@ -1,0 +1,100 @@
+/* ==========================================================================
+   LCDesign & Code - Base & Design Tokens
+   ========================================================================== */
+
+:root {
+    /* --- Paleta de Colores de Marca --- */
+    --color-primary: #091F53;          /* Azul marino profundo (textos, header, footer) */
+    --color-primary-dark: #0A192F;     /* Azul noche para títulos y overlay */
+    --color-primary-light: #122B68;    /* Tono hover sutil para elementos primarios */
+    
+    --color-secondary: #27AE60;        /* Verde corporativo vibrante (destacados, CTAs) */
+    --color-secondary-hover: #219653;  /* Verde oscuro para hover */
+    --color-secondary-light: #52C47D;  /* Verde claro de acento y botones secundarios */
+    --color-secondary-subtle: #C2ECC1; /* Verde pastel suave (badges, números de proceso) */
+
+    /* --- Fondos y Superficies --- */
+    --color-bg-light: #E1EAF4;         /* Celeste suave característico del header y hero */
+    --color-bg-subtle: #EBF2FA;        /* Celeste/azul muy claro (servicios, info cards) */
+    --color-bg-white: #FFFFFF;         /* Fondo blanco puro */
+    --color-bg-card: #FAFAFA;          /* Gris sutil para inputs y superficies neutras */
+    --color-overlay: rgba(10, 25, 47, 0.6); /* Azul noche translúcido con blur */
+
+    /* --- Tipografías y Colores de Texto --- */
+    --font-main: 'Archivo', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --color-text-title: #0F172A;       /* Casi negro para títulos de alto contraste */
+    --color-text-body: #334155;        /* Gris grafito suave para lectura descansada */
+    --color-text-desc: #475569;        /* Gris medio para subtítulos y descripciones secundarias */
+    --color-text-muted: #64748B;       /* Gris claro para labels y elementos sutiles */
+    --color-text-footer-muted: #94A3B8;/* Gris atenuado para navegación de footer */
+    --color-text-white: #FFFFFF;       /* Blanco puro para contrastes oscuros */
+
+    /* --- Bordes y Separadores --- */
+    --color-border: #E2E8F0;           /* Borde neutro estándar de tarjetas e inputs */
+    --color-border-subtle: #E1EAF4;    /* Borde celeste suave */
+    --color-border-card: #E5E8EB;      /* Borde contenedor de proceso */
+
+    /* --- Radios de Bordes (Border Radius) --- */
+    --radius-sm: 6px;                  /* Inputs y selects */
+    --radius-md: 8px;                  /* Tarjetas de especialidades */
+    --radius-lg: 12px;                 /* Botones principales y tags flotantes */
+    --radius-xl: 16px;                 /* Tarjetas de servicios, proyectos y modal */
+    --radius-2xl: 18px;                /* Contenedor envolvente del proceso */
+    --radius-full: 50%;                /* Badges circulares */
+
+    /* --- Sombras (Box Shadows) --- */
+    --shadow-sm: 0 4px 10px rgba(9, 31, 83, 0.05);
+    --shadow-md: 0 8px 20px rgba(9, 31, 83, 0.1);
+    --shadow-lg: 0 10px 30px rgba(9, 40, 112, 0.05);
+    --shadow-card-hover: 0 12px 30px rgba(9, 31, 83, 0.1);
+    --shadow-modal: 0 15px 35px rgba(10, 25, 47, 0.2);
+    --shadow-btn-hover: 0 8px 25px rgba(39, 174, 96, 0.25);
+
+    /* --- Transiciones --- */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+}
+
+/* --- Reseteo Global y Box Sizing --- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+body {
+    font-family: var(--font-main);
+    line-height: 1.6;
+    color: var(--color-text-body);
+    background-color: var(--color-bg-white);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* --- Imágenes Responsivas --- */
+img, svg {
+    max-width: 100%;
+    display: block;
+}
+
+/* --- Clases Utilitarias Reutilizables --- */
+.u-hidden {
+    display: none !important;
+}
+
+.txt-highlight {
+    color: var(--color-secondary);
+    display: inline-block;
+}
+
+.txt-highlight-dark {
+    color: var(--color-primary);
+}

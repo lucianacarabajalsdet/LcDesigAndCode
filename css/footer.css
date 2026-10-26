@@ -1,0 +1,152 @@
+/* ==========================================================================
+   LCDesign & Code - FOOTER (Mobile-First + Desktop Compacto)
+   ========================================================================== */
+
+.main-footer {
+    background-color: var(--color-primary);
+    color: var(--color-text-white);
+    padding: 1.8rem 1.2rem 1.2rem 1.2rem;
+    width: 100%;
+    position: relative;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+    position: relative;
+}
+
+/* --- Navegación del Footer --- */
+.footer-title {
+    font-family: var(--font-main);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--color-text-footer-muted);
+    margin-bottom: 0.6rem;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+
+.footer-links a {
+    color: var(--color-text-white);
+    text-decoration: none;
+    font-family: var(--font-main);
+    font-size: 0.88rem;
+    opacity: 0.85;
+    transition: opacity var(--transition-fast), padding-left var(--transition-fast), color var(--transition-fast);
+}
+
+.footer-links a:hover,
+.footer-links a:active {
+    opacity: 1;
+    color: var(--color-secondary);
+    padding-left: 4px;
+}
+
+/* --- Redes Sociales en Mobile --- */
+.footer-socials {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1rem;
+    position: absolute;
+    right: 0;
+    top: 1.8rem;
+}
+
+.social-icon-link {
+    display: inline-flex;
+    transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+.social-icon-link:hover {
+    transform: scale(1.15);
+}
+
+.footer-icon-img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+/* --- Marca LCDesign & Code --- */
+.footer-brand {
+    font-family: var(--font-main);
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: var(--color-secondary);
+    text-align: center;
+    margin-top: 0.8rem;
+    letter-spacing: 0.5px;
+}
+
+/* ==========================================================================
+   Footer - Versión Escritorio (A partir de 768px)
+   ========================================================================== */
+@media screen and (min-width: 768px) {
+    .main-footer {
+        padding: 2rem 2.5rem 1.8rem 2.5rem;
+    }
+
+    .footer-container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
+        padding-bottom: 0;
+    }
+
+    /* Columna 1: Navegación a la izquierda */
+    .footer-nav {
+        order: 1;
+    }
+
+    .footer-title {
+        margin-bottom: 0.5rem;
+        font-size: 0.85rem;
+    }
+
+    .footer-links {
+        gap: 0.35rem;
+    }
+
+    .footer-links a {
+        font-size: 0.9rem;
+    }
+
+    /* Columna 2: Marca centrada en el medio */
+    .footer-brand {
+        order: 2;
+        position: static;
+        transform: none;
+        margin-top: 0;
+        font-size: 1.15rem;
+        text-align: center;
+    }
+
+    /* Columna 3: Redes sociales en fila a la derecha */
+    .footer-socials {
+        order: 3;
+        position: static;
+        flex-direction: row;
+        gap: 1.2rem;
+        align-items: center;
+        margin-top: 0;
+    }
+
+    .footer-icon-img {
+        width: 26px;
+        height: 26px;
+    }
+}

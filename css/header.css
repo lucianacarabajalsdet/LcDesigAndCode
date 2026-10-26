@@ -1,0 +1,264 @@
+/* ==========================================================================
+   LCDesign & Code - Header & Navegación (Mobile-First + Menú Hamburguesa)
+   ========================================================================== */
+
+/* --- Cabecera Principal --- */
+.main-header {
+    background-color: var(--color-bg-light);
+    width: 100%;
+    position: relative;
+    z-index: 100;
+}
+
+.header-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.8rem 1.2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* --- Logo --- */
+.logo-link {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    z-index: 102; /* Siempre por encima */
+}
+
+.logo-img {
+    height: 52px;
+    width: auto;
+    transition: transform var(--transition-fast);
+}
+
+.logo-link:hover .logo-img {
+    transform: scale(1.02);
+}
+
+/* --- Botón Hamburguesa (Solo Mobile) --- */
+.menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 102; /* Siempre clickeable por encima del menú */
+    border-radius: var(--radius-sm);
+    transition: background-color var(--transition-fast);
+}
+
+.menu-toggle:hover {
+    background-color: rgba(9, 31, 83, 0.05);
+}
+
+.menu-toggle:focus-visible {
+    outline: 2px solid var(--color-secondary);
+}
+
+.hamburger-bar {
+    width: 100%;
+    height: 3px;
+    background-color: var(--color-primary);
+    border-radius: 2px;
+    transition: transform var(--transition-normal), opacity var(--transition-normal), background-color var(--transition-normal);
+}
+
+/* Animación a cruz (X) cuando está activo */
+.menu-toggle.is-active .hamburger-bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.menu-toggle.is-active .hamburger-bar:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.is-active .hamburger-bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* --- Navegación Mobile (Panel Desplegable) --- */
+.main-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-bg-light);
+    border-bottom: 2px solid var(--color-border-subtle);
+    box-shadow: 0 10px 25px rgba(9, 31, 83, 0.1);
+    padding: 1.5rem 1.2rem 2rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    
+    /* Estado colapsado (animado) */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity var(--transition-normal), transform var(--transition-normal), visibility var(--transition-normal);
+    z-index: 101;
+}
+
+.main-nav.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-item {
+    width: 100%;
+    text-align: center;
+}
+
+.nav-link {
+    font-family: var(--font-main);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    text-decoration: none;
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    border-radius: var(--radius-sm);
+    transition: color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.nav-link:hover,
+.nav-link:focus {
+    color: var(--color-secondary);
+    background-color: rgba(39, 174, 96, 0.08);
+}
+
+/* Botón CTA del Header ("Quiero mi sitio") */
+.btn-hero {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-secondary-light);
+    color: var(--color-text-white);
+    padding: 0.8rem 1.6rem;
+    font-family: var(--font-main);
+    font-size: 0.88rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 4px 15px rgba(82, 196, 125, 0.2);
+    transition: transform var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-fast);
+    cursor: pointer;
+    border: none;
+}
+
+.btn-hero:hover {
+    background-color: var(--color-secondary-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-btn-hover);
+}
+
+.btn-hero:active {
+    transform: translateY(0);
+}
+
+/* En mobile: el botón del header de la barra se oculta para no apretar el top,
+   y se muestra dentro del menú desplegable con ancho cómodo */
+.header-cta-desktop {
+    display: none;
+}
+
+.header-cta-mobile {
+    display: inline-flex;
+    width: 100%;
+    max-width: 240px;
+    margin-top: 0.5rem;
+}
+
+
+/* ==========================================================================
+   Header - Versión Escritorio (A partir de 768px)
+   ========================================================================== */
+
+@media screen and (min-width: 768px) {
+    .header-container {
+        padding: 1rem 2rem;
+    }
+
+    .logo-img {
+        height: 80px;
+    }
+
+    /* Ocultamos el botón hamburguesa en desktop */
+    .menu-toggle {
+        display: none;
+    }
+
+    /* La navegación vuelve a su flujo horizontal normal */
+    .main-nav {
+        position: static;
+        width: auto;
+        background-color: transparent;
+        border-bottom: none;
+        box-shadow: none;
+        padding: 0;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .nav-list {
+        flex-direction: row;
+        gap: 2rem;
+        width: auto;
+    }
+
+    .nav-item {
+        width: auto;
+    }
+
+    .nav-link {
+        font-size: 1rem;
+        padding: 0.2rem 0.4rem;
+    }
+
+    /* Mostrar botón en la barra de navegación de escritorio */
+    .header-cta-desktop {
+        display: inline-flex;
+    }
+
+    /* Ocultar el botón duplicado de mobile dentro de la lista */
+    .header-cta-mobile {
+        display: none;
+    }
+}
+
+
+@media screen and (min-width: 1024px) {
+    .logo-img {
+        height: 90px;
+    }
+
+    .nav-list {
+        gap: 2.5rem;
+    }
+}
